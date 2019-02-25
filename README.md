@@ -44,6 +44,19 @@ mocha
 ```bash
 npm publish
 ```
+发布的时候注意源
+
+源管理工具：NRM
+
+安装
+`sudo npm install -g nrm`
+
+查看源列表
+`nrm ls`
+
+使用某个源
+`nrm use npm`
+
 
 开发
  - 编译基于rollup
