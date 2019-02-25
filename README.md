@@ -7,7 +7,7 @@ php版本 ： https://github.com/hanwenbo/policy
 
 ## 安装
 ```bash
-npm install @fashop/policy
+npm install fashop-policy --save
 ```
 
 ## 引入和使用
@@ -58,6 +58,25 @@ npm publish
 `nrm use npm`
 
 
-开发
+## 开发
  - 编译基于rollup
  - 支持浏览器和nodejs
+
+## 疑问
+
+由于不熟悉js
+
+不明白为什么class不能定义属性如：
+```js
+class XX{
+    name;
+    sex;
+}
+```
+在umi.js下就可以
+
+但在rollup下编译就过不去，需要通过构造函数去this.xxxx赋值
+
+如果谁知道，请告诉我
+
+class了解参考：http://es6.ruanyifeng.com/#docs/class
