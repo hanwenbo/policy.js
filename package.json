@@ -1,0 +1,30 @@
+{
+  "name": "fashop-policy",
+  "version": "1.0.0",
+  "description": "policy.js",
+  "main": "dist/policy.min.js",
+  "scripts": {
+    "test": "test",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanwenbo/policy.js.git"
+  },
+  "keywords": [
+    "fashop",
+    "policy"
+  ],
+  "author": "hanwenbo 9476400@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanwenbo/policy.js/issues"
+  },
+  "homepage": "https://github.com/hanwenbo/policy.js#readme",
+  "devDependencies": {
+    "rollup": "^1.2.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "should": "^13.2.3"
+  }
+}
