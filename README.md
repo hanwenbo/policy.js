@@ -12,7 +12,7 @@ npm install fashop-policy --save
 
 ## 引入和使用
 ```js
-import Policy from "@fashop/policy"
+import Policy from "fashop-policy"
 
 var policy =  new Policy
 // 支持添加多组
