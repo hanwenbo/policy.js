@@ -31,6 +31,11 @@ if(policy.verify('goods/info') === true){
 policy.verify('goods/info').should.be.equal(true)
 policy.verify('goods/list').should.be.equal(false)
 
+// 验证表现层，用于多个权限同时验证，当都满足条件时才显示某个节点
+let string  = '(( goods/*  && !goods/list) && goods/info  && goods/info && goods/infoXx) || * || goods/info';
+
+policy.viewVerify(string)
+
 ```
 更便捷的语句式操作，请见github的fashop-admin项目
 

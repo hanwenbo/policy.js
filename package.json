@@ -1,10 +1,10 @@
 {
   "name": "fashop-policy",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "policy.js",
   "main": "dist/policy.min.js",
   "scripts": {
-    "test": "test",
+    "test": "mocha",
     "build": "rollup -c"
   },
   "repository": {

@@ -42,6 +42,7 @@ class Arr {
         return arr1;
     }
 }
+
 export default class Policy {
     constructor() {
         /**
@@ -59,6 +60,7 @@ export default class Policy {
     }
 
     /**
+     * 验证单个接口是否有权限
      * 只支持2级
      * @param actionName
      */
@@ -75,6 +77,20 @@ export default class Policy {
     addPolicy(policy) {
         this.policyList.push(policy)
         this.preParse();
+    }
+
+    /**
+     * 表现层验证
+     * 用于多个权限同时验证，当都满足条件时才显示某个节点
+     * @example let string  = '(( goods/*  && !goods/list) && goods/info  && goods/info && goods/infoXx) || * || goods/info';
+     */
+    viewVerify(string) {
+        var patt = /([\w|\d|\*]+\/[\w|*]+)|\*/g;
+        let matchList = string.match(patt);
+        matchList.map((item) => {
+            string = string.replace(/([\w|\d|\*]+\/[\w|*]+)|\*/, this.verify(item) ? "true" : "false");//把'is'替换为空字符串
+        })
+        return !!eval(string)
     }
 
     /**
@@ -103,26 +119,28 @@ export default class Policy {
      * 特殊，临时写法
      * 不支持Effect判断，仅为获得action列表
      */
-    static getActionList(policy){
+    static getActionList(policy) {
         let actions = [];
         let statement_list = policy.Statement;
         for (var j = 0; j < statement_list.length; j++) {
             let statement = statement_list[j];
-            for (var a = 0; a < statement.Action.length; a++ )
+            for (var a = 0; a < statement.Action.length; a++)
                 actions.push(statement.Action[a]);
         }
         return actions
     }
+
     /**
      * 用于获得一组policy获得所有的module
      * 特殊，临时写法
      * 不支持Effect判断，仅为获得action列表
      */
-    static getEffect(policy){
+    static getEffect(policy) {
         let statement_list = policy.Statement;
         for (var j = 0; j < statement_list.length; j++) {
             let statement = statement_list[j];
             return statement.Effect
         }
     }
+
 }
