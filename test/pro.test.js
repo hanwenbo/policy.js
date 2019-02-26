@@ -81,6 +81,25 @@ describe('Policy', () => {
             policy.viewVerify('(order/info && refund/*) && goods/list').should.be.equal(false)
         })
     })
+
+    describe('getActionList', () => {
+        it('success', () => {
+            var policy =  new Policy()
+            const result = policy.getActionList({"Statement": [{"Action": ["user/*","goods/info","order/info","refund/*"], "Effect": "Allow"}]})
+            result.should.be.instanceof(Array).and.have.lengthOf(4);
+        })
+    })
+
+    describe('getEffect', () => {
+        it('success', () => {
+            var policy =  new Policy()
+            const result1 = policy.getEffect({"Statement": [{"Action": ["user/*","goods/info","order/info","refund/*"], "Effect": "Allow"}]})
+            result1.should.be.equal('Allow')
+
+            const result2 = policy.getEffect({"Statement": [{"Action": ["user/*","goods/info","order/info","refund/*"], "Effect": "Deny"}]})
+            result2.should.be.equal('Deny')
+        })
+    })
 })
 
 
