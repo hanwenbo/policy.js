@@ -68,7 +68,7 @@ export default class Policy {
         let _split = actionName.split("/");
         let controller = _split[0];
         // 允许
-        let allow = Arr.inArray(actionName, this.allowActions) || Arr.inArray(`${controller}/*`, this.allowActions) || Arr.inArray("*", this.denyActions);
+        let allow = Arr.inArray(actionName, this.allowActions) || Arr.inArray(`${controller}/*`, this.allowActions) || Arr.inArray("*", this.allowActions);
         // 禁止
         let deny = Arr.inArray(actionName, this.denyActions) || Arr.inArray(`${controller}/*`, this.denyActions) || Arr.inArray("*", this.denyActions);
         return allow && !deny;
