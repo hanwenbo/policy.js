@@ -85,3 +85,6 @@ class XX{
 如果谁知道，请告诉我
 
 class了解参考：http://es6.ruanyifeng.com/#docs/class
+
+### 感谢
+![img](https://ws4.sinaimg.cn/large/006tKfTcly1g139x67vvrj30ry0nan43.jpg)
