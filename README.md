@@ -88,3 +88,4 @@ class了解参考：http://es6.ruanyifeng.com/#docs/class
 
 ### 感谢
 ![img](https://ws4.sinaimg.cn/large/006tKfTcly1g139x67vvrj30ry0nan43.jpg)
+![img](https://ws3.sinaimg.cn/large/006tKfTcly1g139y9vr50j30q80eq44m.jpg)
