@@ -1,11 +1,13 @@
 {
   "name": "fashop-policy",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "policy.js",
   "main": "dist/policy.min.js",
   "scripts": {
     "test": "mocha",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "login": "npm login --registry http://registry.npmjs.org",
+    "pubish": "npm publish --registry http://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
