@@ -85,12 +85,17 @@ export default class Policy {
      * @example let string  = '(( goods/*  && !goods/list) && goods/info  && goods/info && goods/infoXx) || * || goods/info';
      */
     viewVerify(string) {
+        string = `${string}`
         var patt = /([\w|\d|\*]+\/[\w|*]+)|\*/g;
         let matchList = string.match(patt);
-        matchList.map((item) => {
-            string = string.replace(/([\w|\d|\*]+\/[\w|*]+)|\*/, this.verify(item) ? "true" : "false");//把'is'替换为空字符串
-        })
-        return !!eval(string)
+        if (matchList) {
+            matchList.map((item) => {
+                string = string.replace(/([\w|\d|\*]+\/[\w|*]+)|\*/, this.verify(item) ? "true" : "false");//把'is'替换为空字符串
+            })
+            return !!eval(string)
+        } else {
+            return false
+        }
     }
 
     /**
