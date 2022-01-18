@@ -66,7 +66,8 @@ export default class Policy {
      */
     verify(actionName) {
         let _split = actionName.split("/");
-        let controller = _split[0];
+        _split.pop()
+        let controller = _split.join('/');
         // 允许
         let allow = Arr.inArray(actionName, this.allowActions) || Arr.inArray(`${controller}/*`, this.allowActions) || Arr.inArray("*", this.allowActions);
         // 禁止
@@ -85,18 +86,20 @@ export default class Policy {
      * @example let string  = '(( goods/*  && !goods/list) && goods/info  && goods/info && goods/infoXx) || * || goods/info';
      */
     viewVerify(string) {
-        string = `${string}`
-        var patt = /([\w|\d|\*]+\/[\w|*]+)|\*/g;
+        string = `${string}`;
+        var patt = /[a-zA-Z0-9/*]+/g;
+        // var patt = /([\w|\d|\*]+\/[\w|*]+)|\*/g;
         let matchList = string.match(patt);
         if (matchList) {
             matchList.map((item) => {
-                string = string.replace(/([\w|\d|\*]+\/[\w|*]+)|\*/, this.verify(item) ? "true" : "false");//把'is'替换为空字符串
-            })
+                string = string.replace(item, this.verify(item) ? "true" : "false");//把'is'替换为空字符串
+            });
             return !!eval(string)
         } else {
             return false
         }
     }
+
 
     /**
      * 预解析

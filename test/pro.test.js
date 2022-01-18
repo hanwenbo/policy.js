@@ -64,12 +64,14 @@ describe('Policy', () => {
             policy.verify('goods/info').should.be.equal(true)
             policy.verify('goods/list').should.be.equal(false)
         })
+
+
     })
 
     describe('viewVerify', () => {
         it('success', () => {
             var policy =  new Policy()
-            policy.addPolicy({"Statement": [{"Action": ["user/*","goods/info","order/info","refund/*"], "Effect": "Allow"}]})
+            policy.addPolicy({"Statement": [{"Action": ["user/*","goods/info","order/info","refund/*",'warehouse/order/*','warehouse/goods/*'], "Effect": "Allow"}]})
             policy.addPolicy({"Statement": [{"Action": ["user/*","goods/list"], "Effect": "Deny"}]})
             policy.viewVerify('goods/info').should.be.equal(true)
             policy.viewVerify('goods/info && goods/list').should.be.equal(false)
@@ -79,6 +81,9 @@ describe('Policy', () => {
             policy.viewVerify('order/info && refund/*').should.be.equal(true)
             policy.viewVerify('(order/info && refund/*) || goods/list').should.be.equal(true)
             policy.viewVerify('(order/info && refund/*) && goods/list').should.be.equal(false)
+            policy.viewVerify('(warehouse/order/list) && (warehouse/goods/list)').should.be.equal(true)
+            policy.viewVerify('(warehouse/order/list) && (warehouse/refund/list)').should.be.equal(false)
+
         })
     })
 
@@ -100,6 +105,8 @@ describe('Policy', () => {
             result2.should.be.equal('Deny')
         })
     })
+
+
 })
 
 

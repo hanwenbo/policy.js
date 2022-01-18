@@ -1,13 +1,13 @@
 {
   "name": "fashop-policy",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "policy.js",
   "main": "dist/policy.min.js",
   "scripts": {
     "test": "mocha",
     "build": "rollup -c",
-    "login": "npm login --registry http://registry.npmjs.org",
-    "pubish": "npm publish --registry http://registry.npmjs.org"
+    "login": "npm login --registry https://registry.npmjs.org",
+    "pubish": "npm publish --registry https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/hanwenbo/policy.js#readme",
   "devDependencies": {
+    "mocha": "^9.1.4",
     "rollup": "^1.2.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^4.0.1",

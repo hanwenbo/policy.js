@@ -47,7 +47,8 @@ mocha
 
 ## 发布
 ```bash
-npm publish
+npm login --registry https://registry.npmjs.org
+npm publish --registry https://registry.npmjs.org
 ```
 发布的时候注意源
 
